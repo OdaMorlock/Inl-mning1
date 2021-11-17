@@ -12,14 +12,16 @@ namespace Inlämning1.Class
         IKennelServices kennelServices;
         IAddToList addToList;
         IViewList viewList;
+        IChecksAndControlls checksAndControlls;
 
 
 
-        public Menu(IKennelServices kennelServices, IAddToList addToList, IViewList viewList)
+        public Menu(IKennelServices kennelServices, IAddToList addToList, IViewList viewList, IChecksAndControlls checksAndControlls)
         {
             this.kennelServices = kennelServices;
             this.addToList = addToList;
             this.viewList = viewList;
+            this.checksAndControlls = checksAndControlls;
         }
 
         // The Main Menu
@@ -35,7 +37,11 @@ namespace Inlämning1.Class
                 Console.WriteLine("Type Exit or e For Exiting");
                 Console.WriteLine("------------------------------------------");
                 Console.WriteLine(" ");
+
                 var Option = Console.ReadLine();
+
+                Option = checksAndControlls.UppercaseFirstLetter(Option);
+
                 switch (Option)
                 {
 
@@ -52,7 +58,7 @@ namespace Inlämning1.Class
                         Active = false;
                         Console.WriteLine("Closeing Program");
                         break;
-                    case "e":
+                    case "E":
                         Active = false;
                         Console.WriteLine("Closeing Program");
                         break;
@@ -79,6 +85,9 @@ namespace Inlämning1.Class
                 Console.WriteLine("------------------------------------------");
                 Console.WriteLine(" ");
                 var Option = Console.ReadLine();
+
+                Option = checksAndControlls.UppercaseFirstLetter(Option);
+
                 string AnimalName;
                 switch (Option)
                 {
@@ -103,7 +112,7 @@ namespace Inlämning1.Class
                     case "Exit":
                         Active = false;
                         break;
-                    case "e":
+                    case "E":
                         Active = false;
                         break;
                     default:
@@ -129,6 +138,8 @@ namespace Inlämning1.Class
                 Console.WriteLine("------------------------------------------");
                 var Option = Console.ReadLine();
 
+                Option = checksAndControlls.UppercaseFirstLetter(Option);
+
                 switch (Option)
                 {
                     case "1":
@@ -145,7 +156,7 @@ namespace Inlämning1.Class
                         Active = false;
                         Console.WriteLine("Exiting to Main Menu");
                         break;
-                    case "e":
+                    case "E":
                         Active = false;
                         Console.WriteLine("Exiting to Main Menu");
                         break;
@@ -170,6 +181,9 @@ namespace Inlämning1.Class
                 Console.WriteLine("------------------------------------------");
 
                 var Option = Console.ReadLine();
+
+                Option = checksAndControlls.UppercaseFirstLetter(Option);
+
                 switch (Option)
                 {
                     case "1":
@@ -187,7 +201,7 @@ namespace Inlämning1.Class
                         Active = false;
                         Console.WriteLine("Exiting List View");
                         break;
-                    case "e":
+                    case "E":
                         Active = false;
                         Console.WriteLine("Exiting List View");
                         break;

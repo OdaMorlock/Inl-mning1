@@ -31,6 +31,8 @@ namespace Inlämning1
             builder.RegisterType<ViewListClass>().As<IViewList>();
             builder.RegisterType<SearchTroughList>().As<ISearchTroughList>();
 
+            builder.RegisterType<ChecksAndControlls>().As<IChecksAndControlls>();
+
             return builder.Build();
 
         }
