@@ -20,10 +20,16 @@ namespace Inlämning1
             builder.RegisterType<Application>().As<IApplication>();
 
             //Secondary needed for Application
+            builder.RegisterType<Menu>().As<IMenu>();
+
             builder.RegisterType<Customer>().As<ICustomer>();
             builder.RegisterType<Dog>().As<IDog>();
+
             builder.RegisterType<KennelServices>().As<IKennelServices>();
-            builder.RegisterType<Services>().As<IServices>();
+            builder.RegisterType<AddToList>().As<IAddToList>();
+
+            builder.RegisterType<ViewListClass>().As<IViewList>();
+            builder.RegisterType<SearchTroughList>().As<ISearchTroughList>();
 
             return builder.Build();
 
