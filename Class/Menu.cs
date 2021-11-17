@@ -28,10 +28,12 @@ namespace Inlämning1.Class
              bool Active = true;
             while (Active)
             {
+                Console.WriteLine("------------------------------------------");
                 Console.WriteLine("Type 1 For Viewing Adding Menu");
                 Console.WriteLine("Type 2 For Viewing KennelServices Menu");
                 Console.WriteLine("Type 3 For View List");
                 Console.WriteLine("Type Exit or e For Exiting");
+                Console.WriteLine("------------------------------------------");
                 Console.WriteLine(" ");
                 var Option = Console.ReadLine();
                 switch (Option)
@@ -68,11 +70,16 @@ namespace Inlämning1.Class
             bool Active = true;
             while (Active)
             {
+                Console.WriteLine("------------------------------------------");
                 Console.WriteLine("Type 1 For Washing");
                 Console.WriteLine("Type 2 For CuttingClaws ");
+                Console.WriteLine("Type 3 For TurningInDog ");
+                Console.WriteLine("Type 4 For TurningOutDog ");
                 Console.WriteLine("Type Exit or e To Exit To Main Menu");
+                Console.WriteLine("------------------------------------------");
                 Console.WriteLine(" ");
                 var Option = Console.ReadLine();
+                string AnimalName;
                 switch (Option)
                 {
                     case "1":
@@ -80,6 +87,18 @@ namespace Inlämning1.Class
                         break;
                     case "2":
                         kennelServices.CuttingClaws(dogs);
+                        break;
+                    case "3":
+                        Console.WriteLine("Name of the Dog you wish to Turn In");
+                        AnimalName = Console.ReadLine();
+                        kennelServices.TurnInAnimal(dogs,AnimalName);
+                        Console.WriteLine("------------------------------------------");
+                        break;
+                    case "4":
+                        Console.WriteLine("Name of the Dog you wish to Turn Out");
+                        AnimalName = Console.ReadLine();
+                        kennelServices.TakeOutAnimal(dogs,AnimalName);
+                        Console.WriteLine("------------------------------------------");
                         break;
                     case "Exit":
                         Active = false;
@@ -102,10 +121,12 @@ namespace Inlämning1.Class
             bool Active = true;
             while (Active)
             {
+                Console.WriteLine("------------------------------------------");
                 Console.WriteLine("Type 1 To AddCustomer");
                 Console.WriteLine("Type 2 To Add Dog");
                 Console.WriteLine("Type 3 To Add 2 Dummy Customer and 3 Dummy Dog´s");
                 Console.WriteLine("Type Exit or e To Exit To Main Menu");
+                Console.WriteLine("------------------------------------------");
                 var Option = Console.ReadLine();
 
                 switch (Option)
@@ -141,10 +162,12 @@ namespace Inlämning1.Class
             bool Active = true;
             while (Active)
             {
+                Console.WriteLine("------------------------------------------");
                 Console.WriteLine("Type 1 For List Of Cumstomer");
                 Console.WriteLine("Type 2 For List Of Dog");
                 Console.WriteLine("Type 3 For Search for Animal Owned by Specific Owner");
                 Console.WriteLine("Type Exit or e For Exiting too Service Menu");
+                Console.WriteLine("------------------------------------------");
 
                 var Option = Console.ReadLine();
                 switch (Option)

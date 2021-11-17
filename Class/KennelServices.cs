@@ -66,6 +66,7 @@ namespace Inlämning1.Class
         {
             if (dogs.Any(where => where.Name == AnimalName))
             {
+                Console.WriteLine($"{AnimalName} Turned In");
                 dogs.Find(Animal => Animal.Name == AnimalName).InKennel = true;
                 dogs.Find(Animal => Animal.Name == AnimalName).SetTurnInTime();
             }
@@ -79,7 +80,7 @@ namespace Inlämning1.Class
 
             if (dogs.Any(where => where.Name == AnimalName))
             {
-
+                Console.WriteLine($"{AnimalName} Taken Out");
                 dogs.Find(Animal => Animal.Name == AnimalName).InKennel = false;
 
                 var turnInTime = dogs.Find(Animal => Animal.Name == AnimalName).TurnInTime;

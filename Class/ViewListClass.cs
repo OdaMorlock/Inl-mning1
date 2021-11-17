@@ -39,18 +39,31 @@ namespace Inlämning1.Class
         //Search in list of IDog by Owner NAme
         public void ListOfDogsOwnedByOwner(List<IDog> dogs, string OwnerFullName)
         {
-            var found = dogs.FindAll(item => item.Owner == OwnerFullName);
-
-            foreach (var item in found)
+            
+            var found = dogs.FindAll(x => x.Owner == OwnerFullName);
+            
+            if (found.Count != 0)
+            {
+                foreach (var item in found)
+                {
+                    Console.WriteLine("----------------------------------------------------------");
+                    Console.WriteLine($"Dog Owner:{item.Owner}");
+                    Console.WriteLine($"Dog Name:{item.Name} " + $"Dog Age:{item.Age}");
+                    Console.WriteLine($"Dog Gender:{item.Gender}");
+                    Console.WriteLine($"Dog Type:{item.DogType}   In Kennel:{item.InKennel}");
+                    Console.WriteLine("----------------------------------------------------------");
+                    Console.WriteLine(" ");
+                }
+            }
+            else if(found.Count == 0)
             {
                 Console.WriteLine("----------------------------------------------------------");
-                Console.WriteLine($"Dog Owner:{item.Owner}");
-                Console.WriteLine($"Dog Name:{item.Name} " + $"Dog Age:{item.Age}");
-                Console.WriteLine($"Dog Gender:{item.Gender}");
-                Console.WriteLine($"Dog Type:{item.DogType}   In Kennel:{item.InKennel}");
+                Console.WriteLine("");
+                Console.WriteLine($"Chould not find an dog with Owner: {OwnerFullName}");
+                Console.WriteLine("");
                 Console.WriteLine("----------------------------------------------------------");
-                Console.WriteLine(" ");
             }
+            
         }
 
         // Search in List By AnimalName
