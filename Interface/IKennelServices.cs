@@ -11,10 +11,10 @@ namespace Inlämning1.Interface
 
         Decimal Cost { get; set; }
 
-        IDog SearchForAnimalUsingName(string AnimalName);
-        void Washing();
-        void CuttingClaws();
-        void ViewKennelServices();
+        void Washing(List<IDog> dogs);
+        void CuttingClaws(List<IDog> dogs);
+        public void TurnInAnimal(List<IDog> dogs,string AnimalName);
+        public void TakeOutAnimal(List<IDog> dogs,string AnimalName);
 
     }
 }
