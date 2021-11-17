@@ -17,7 +17,7 @@ namespace Inlämning1.Class
         public decimal Cost { get;set; }
 
 
-
+        // Runs the options for KennelServices
         public void ViewKennelServices()
         {
             bool Active = true;
@@ -51,7 +51,7 @@ namespace Inlämning1.Class
             }
             
         }
-
+        // does the cutting claw register and cost calculation
         public void CuttingClaws()
         {
             Console.WriteLine("Please Write the name of the Animal you want Getting the CuttingClaw Service");
@@ -69,7 +69,7 @@ namespace Inlämning1.Class
             }
 
         }
-
+        // does the Washing register and cost calculation
         public void Washing()
         {
             Console.WriteLine("Please Write the name of the Animal you want Getting Washing the Service");
@@ -87,6 +87,7 @@ namespace Inlämning1.Class
             }
 
         }
+        // Add´s 2 dummy Customer and 3 Dog´s
         public void AddDummyCustomersAndDogs()
         {
             // Adding Dummy Customers
@@ -100,7 +101,7 @@ namespace Inlämning1.Class
             Console.WriteLine(" 3 dog´s added: with names : Dog1Name. Dog2Name. Dog3Name");
 
         }
-
+        // Search for a Dog in list by Name and return´s 1 dog
         public IDog SearchForAnimalUsingName(string AnimalName)
         {
 

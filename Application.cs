@@ -20,7 +20,7 @@ namespace Inlämning1
         }
 
         private bool Active = true;
-
+        // Runs the Main Menu
         public void Run()
         {
             while (Active)

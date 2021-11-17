@@ -169,7 +169,7 @@ namespace Inlämning1.Class
         }
 
 
-
+        // Runs the options for Viewing Lists
         public void ViewList()
         {
             bool Active = true;
@@ -230,6 +230,7 @@ namespace Inlämning1.Class
                 }
             }
         }
+        // Add´s 2 Customers and 3 Dog´s
         public void AddDummyCustomersAndDogs()
         {
             // Adding Dummy Customers
