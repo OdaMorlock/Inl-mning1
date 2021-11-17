@@ -11,7 +11,7 @@ namespace Inlämning1
     class Application : IApplication
     {
         IMenu menu;
-
+        //Would have been API and not List if i had the time
         List<ICustomer> Customers = new List<ICustomer>();
         List<IDog> Dogs = new List<IDog>();
         public Application(IMenu menu)
