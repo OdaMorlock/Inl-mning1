@@ -9,6 +9,7 @@ namespace Inlämning1.Class
 {
     class ViewListClass : IViewList
     {
+        //Writes full list of ICustomer
         public void ListOfCustomer(List<ICustomer> customers)
         {
             foreach (var item in customers)
@@ -20,6 +21,7 @@ namespace Inlämning1.Class
             }
         }
 
+        //Writes full list of IDog
         public void ListOfDogs(List<IDog> dogs)
         {
             foreach (var item in dogs)
@@ -34,6 +36,7 @@ namespace Inlämning1.Class
             }
         }
 
+        //Search in list of IDog by Owner NAme
         public void ListOfDogsOwnedByOwner(List<IDog> dogs, string OwnerFullName)
         {
             var found = dogs.FindAll(item => item.Owner == OwnerFullName);
@@ -50,11 +53,8 @@ namespace Inlämning1.Class
             }
         }
 
-        public IDog SearchForAnimalUsingName(List<IDog> dogs, string AnimalName)
-        {
-            var dog = dogs.Find(Animal => Animal.Name == AnimalName);
-            return dog;
-        }      
+        // Search in List By AnimalName
+
 
     }
 }

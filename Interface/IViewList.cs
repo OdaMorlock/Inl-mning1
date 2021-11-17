@@ -11,6 +11,6 @@ namespace Inlämning1.Interface
         void ListOfCustomer(List<ICustomer> customers);
         void ListOfDogs(List<IDog> dogs);
         void ListOfDogsOwnedByOwner(List<IDog> dogs,string OwnerFullName);
-        IDog SearchForAnimalUsingName(List<IDog> dogs, string AnimalName);
+
     }
 }

@@ -22,7 +22,7 @@ namespace Inlämning1.Class
             this.viewList = viewList;
         }
 
-
+        // The Main Menu
         public void MainMenu(List<ICustomer> customers, List<IDog> dogs)
         {
              bool Active = true;
@@ -62,6 +62,7 @@ namespace Inlämning1.Class
             }
         }
 
+        //The Menu for KennelServices
         public void KennelServicesMenu(List<ICustomer> customers, List<IDog> dogs)
         {
             bool Active = true;
@@ -95,6 +96,7 @@ namespace Inlämning1.Class
 
         }
 
+        // The Menu for Adding to lists
         public void AddMenu(List<ICustomer> customers, List<IDog> dogs)
         {
             bool Active = true;
@@ -133,6 +135,7 @@ namespace Inlämning1.Class
             }
         }
 
+        // Menu for view List and Search Through List
         public void ViewListMenu(List<ICustomer> customers, List<IDog> dogs)
         {
             bool Active = true;

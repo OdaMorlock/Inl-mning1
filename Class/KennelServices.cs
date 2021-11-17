@@ -11,10 +11,12 @@ namespace Inlämning1.Class
     {
         // Should be an Api but i´m Lazy and i just Assume The list´s are accurate.
         IViewList viewList;
+        ISearchTroughList searchTroughList;
 
-        public KennelServices(IViewList viewList)
+        public KennelServices(IViewList viewList, ISearchTroughList searchTroughList)
         {
             this.viewList = viewList;
+            this.searchTroughList = searchTroughList;
         }
 
         public decimal Cost { get;set; }
@@ -26,7 +28,7 @@ namespace Inlämning1.Class
         {
             Console.WriteLine("Please Write the name of the Animal you want Getting the CuttingClaw Service");
             var AnimalName = Console.ReadLine();
-            var dog = viewList.SearchForAnimalUsingName(dogs, AnimalName);
+            var dog = searchTroughList.SearchForAnimalUsingName(dogs, AnimalName);
 
             if (dog != null)
             {
@@ -45,7 +47,7 @@ namespace Inlämning1.Class
         {
             Console.WriteLine("Please Write the name of the Animal you want Getting Washing the Service");
             var AnimalName = Console.ReadLine();
-            var dog = viewList.SearchForAnimalUsingName(dogs,AnimalName);
+            var dog = searchTroughList.SearchForAnimalUsingName(dogs,AnimalName);
 
             if (dog != null)
             {
