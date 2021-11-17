@@ -8,10 +8,10 @@ namespace Inlämning1.Interface
 {
     interface IMenu
     {
-        void MainMenu();
-        void AddMenu();
-        void KennelServicesMenu();
-        void ViewListMenu();
+        void MainMenu(List<ICustomer> customers,List<IDog> dogs);
+        void AddMenu(List<ICustomer> customers, List<IDog> dogs);
+        void KennelServicesMenu(List<ICustomer> customers, List<IDog> dogs);
+        void ViewListMenu(List<ICustomer> customers, List<IDog> dogs);
 
     }
 }

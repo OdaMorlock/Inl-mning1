@@ -13,8 +13,7 @@ namespace Inlämning1.Class
         IAddToList addToList;
         IViewList viewList;
 
-        List<ICustomer> Customers = new List<ICustomer>();
-        List<IDog> Dogs = new List<IDog>();
+
 
         public Menu(IKennelServices kennelServices, IAddToList addToList, IViewList viewList)
         {
@@ -24,7 +23,7 @@ namespace Inlämning1.Class
         }
 
 
-        public void MainMenu()
+        public void MainMenu(List<ICustomer> customers, List<IDog> dogs)
         {
              bool Active = true;
             while (Active)
@@ -39,13 +38,13 @@ namespace Inlämning1.Class
                 {
 
                     case "1":
-                        AddMenu();
+                        AddMenu(customers,dogs);
                         break;
                     case "2":
-                        KennelServicesMenu();
+                        KennelServicesMenu(customers, dogs);
                         break;
                     case "3":
-                        ViewListMenu();
+                        ViewListMenu(customers, dogs);
                         break;
                     case "Exit":
                         Active = false;
@@ -63,7 +62,7 @@ namespace Inlämning1.Class
             }
         }
 
-        public void KennelServicesMenu()
+        public void KennelServicesMenu(List<ICustomer> customers, List<IDog> dogs)
         {
             bool Active = true;
             while (Active)
@@ -76,10 +75,10 @@ namespace Inlämning1.Class
                 switch (Option)
                 {
                     case "1":
-                        kennelServices.Washing(Dogs);
+                        kennelServices.Washing(dogs);
                         break;
                     case "2":
-                        kennelServices.CuttingClaws(Dogs);
+                        kennelServices.CuttingClaws(dogs);
                         break;
                     case "Exit":
                         Active = false;
@@ -96,7 +95,7 @@ namespace Inlämning1.Class
 
         }
 
-        public void AddMenu()
+        public void AddMenu(List<ICustomer> customers, List<IDog> dogs)
         {
             bool Active = true;
             while (Active)
@@ -110,14 +109,14 @@ namespace Inlämning1.Class
                 switch (Option)
                 {
                     case "1":
-                        addToList.AddCustomer(Customers);
+                        addToList.AddCustomer(customers);
                         break;
 
                     case "2":
-                        addToList.AddDog(Dogs);
+                        addToList.AddDog(dogs);
                         break;
                     case "3":
-                        addToList.AddDummyCustomersAndDogs(Customers,Dogs);
+                        addToList.AddDummyCustomersAndDogs(customers,dogs);
                         break;
                     case "Exit":
                         Active = false;
@@ -134,7 +133,7 @@ namespace Inlämning1.Class
             }
         }
 
-        public void ViewListMenu()
+        public void ViewListMenu(List<ICustomer> customers, List<IDog> dogs)
         {
             bool Active = true;
             while (Active)
@@ -148,15 +147,15 @@ namespace Inlämning1.Class
                 switch (Option)
                 {
                     case "1":
-                        viewList.ListOfCustomer(Customers);
+                        viewList.ListOfCustomer(customers);
                         break;
                     case "2":
-                        viewList.ListOfDogs(Dogs);
+                        viewList.ListOfDogs(dogs);
                         break;
                     case "3":
                         Console.WriteLine("Write Owner FullName ex: FirstName.LastName");
                         var SearchName = Console.ReadLine();
-                        viewList.ListOfDogsOwnedByOwner(Dogs,SearchName);
+                        viewList.ListOfDogsOwnedByOwner(dogs,SearchName);
                         break;
                     case "Exit":
                         Active = false;

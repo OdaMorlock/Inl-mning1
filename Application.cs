@@ -12,6 +12,8 @@ namespace Inlämning1
     {
         IMenu menu;
 
+        List<ICustomer> Customers = new List<ICustomer>();
+        List<IDog> Dogs = new List<IDog>();
         public Application(IMenu menu)
         {
             this.menu = menu;
@@ -21,7 +23,7 @@ namespace Inlämning1
         // Runs the Main Menu
         public void Run()
         {
-            menu.MainMenu();
+            menu.MainMenu(Customers,Dogs);
         }
     }
 }
