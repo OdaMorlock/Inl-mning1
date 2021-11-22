@@ -16,7 +16,9 @@ namespace Inlämning1.Interface
         string Gender { get; set; }
         string Owner { get; set; }
         bool InKennel { get; set; }
-
+        DateTime TurnInTime { get; set; }
+        void SetTurnInTime();
+        void SetId();
 
     }
 }

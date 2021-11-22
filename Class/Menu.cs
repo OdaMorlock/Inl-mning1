@@ -10,22 +10,22 @@ namespace Inlämning1.Class
     class Menu : IMenu
     {
         IKennelServices kennelServices;
-        IAddToList addToList;
-        IViewList viewList;
         IChecksAndControlls checksAndControlls;
+        ICustomerManager customerManager;
+        IDogManager dogManager;
 
 
 
-        public Menu(IKennelServices kennelServices, IAddToList addToList, IViewList viewList, IChecksAndControlls checksAndControlls)
+        public Menu(IKennelServices kennelServices, IChecksAndControlls checksAndControlls, ICustomerManager customerManager, IDogManager dogManager)
         {
             this.kennelServices = kennelServices;
-            this.addToList = addToList;
-            this.viewList = viewList;
             this.checksAndControlls = checksAndControlls;
+            this.customerManager = customerManager;
+            this.dogManager = dogManager;
         }
 
         // The Main Menu
-        public void MainMenu(List<ICustomer> customers, List<IDog> dogs)
+        public void MainMenu()
         {
             try
             {
@@ -48,13 +48,13 @@ namespace Inlämning1.Class
                     {
 
                         case "1":
-                            AddMenu(customers, dogs);
+                            AddMenu();
                             break;
                         case "2":
-                            KennelServicesMenu(customers, dogs);
+                            KennelServicesMenu();
                             break;
                         case "3":
-                            ViewListMenu(customers, dogs);
+                            ViewListMenu();
                             break;
                         case "Exit":
                             Active = false;
@@ -80,7 +80,7 @@ namespace Inlämning1.Class
         }
 
         //The Menu for KennelServices
-        public void KennelServicesMenu(List<ICustomer> customers, List<IDog> dogs)
+        public void KennelServicesMenu()
         {
             try
             {
@@ -103,21 +103,21 @@ namespace Inlämning1.Class
                     switch (Option)
                     {
                         case "1":
-                            kennelServices.Washing(dogs);
+                            kennelServices.Washing();
                             break;
                         case "2":
-                            kennelServices.CuttingClaws(dogs);
+                            kennelServices.CuttingClaws();
                             break;
                         case "3":
                             Console.WriteLine("Name of the Dog you wish to Turn In");
                             AnimalName = Console.ReadLine();
-                            kennelServices.TurnInAnimal(dogs, AnimalName);
+                            kennelServices.TurnInAnimal(AnimalName);
                             Console.WriteLine("------------------------------------------");
                             break;
                         case "4":
                             Console.WriteLine("Name of the Dog you wish to Turn Out");
                             AnimalName = Console.ReadLine();
-                            kennelServices.TakeOutAnimal(dogs, AnimalName);
+                            kennelServices.TakeOutAnimal(AnimalName);
                             Console.WriteLine("------------------------------------------");
                             break;
                         case "Exit":
@@ -143,7 +143,7 @@ namespace Inlämning1.Class
         }
 
         // The Menu for Adding to lists
-        public void AddMenu(List<ICustomer> customers, List<IDog> dogs)
+        public void AddMenu()
         {
             try
             {
@@ -163,14 +163,15 @@ namespace Inlämning1.Class
                     switch (Option)
                     {
                         case "1":
-                            addToList.AddCustomer(customers);
+                            customerManager.AddCustomer();
                             break;
 
                         case "2":
-                            addToList.AddDog(dogs);
+                            dogManager.AddDog();
                             break;
                         case "3":
-                            addToList.AddDummyCustomersAndDogs(customers, dogs);
+                            dogManager.AddDummyDogs();
+                            customerManager.DummyCustomer();
                             break;
                         case "Exit":
                             Active = false;
@@ -195,7 +196,7 @@ namespace Inlämning1.Class
         }
 
         // Menu for view List and Search Through List
-        public void ViewListMenu(List<ICustomer> customers, List<IDog> dogs)
+        public void ViewListMenu()
         {
             try
             {
@@ -216,15 +217,15 @@ namespace Inlämning1.Class
                     switch (Option)
                     {
                         case "1":
-                            viewList.ListOfCustomer(customers);
+                            customerManager.ListOfCustomer();
                             break;
                         case "2":
-                            viewList.ListOfDogs(dogs);
+                            dogManager.ViewListOfDogs();
                             break;
                         case "3":
                             Console.WriteLine("Write Owner FullName ex: FirstName.LastName");
                             var SearchName = Console.ReadLine();
-                            viewList.ListOfDogsOwnedByOwner(dogs, SearchName);
+                            dogManager.ListOfDogsOwnedByOwner(SearchName);
                             break;
                         case "Exit":
                             Active = false;
