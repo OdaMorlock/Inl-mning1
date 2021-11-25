@@ -23,6 +23,17 @@ namespace Inlämning1.Class
         public bool InKennel { get; set; }
         public DateTime TurnInTime { get; set; }
 
+        public IAnimal SearchTroughtListByAnimalName(List<IAnimal> animals, string AnimalName)
+        {
+            return animals.Find(x => x.Name == AnimalName);
+        }
+        public IAnimal SearchTroughtListByOwnerName(List<IAnimal> animals, string OwnerFullName)
+        {
+
+            return animals.Find(x => x.Owner == OwnerFullName);
+
+        }
+
 
         #region Set 
         public void SetAnimaltype()

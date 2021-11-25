@@ -13,24 +13,24 @@ namespace Inlämning1.Class
 
         IDogManager dogManager;
         ICustomerManager customerManager;
-        public KennelServices(IDogManager dogManager, ICustomerManager customerManager)
+        IAnimal animal;
+        public KennelServices(IDogManager dogManager, ICustomerManager customerManager, IAnimal animal)
         {
             this.dogManager = dogManager;
             this.customerManager = customerManager;
+            this.animal = animal;
         }
 
         public decimal Cost { get;set; }
 
-
-
         // does the cutting claw register and cost calculation
-        public void CuttingClaws()
+        public void CuttingClaws(List<IAnimal> animals)
         {
             Console.WriteLine("Please Write the name of the Animal you want Getting the CuttingClaw Service");
             var AnimalName = Console.ReadLine();
-            var dog = dogManager.SearchTroughtListByAnimalName(AnimalName);
+            var theAnimal = animal.SearchTroughtListByAnimalName(animals,AnimalName);
 
-            if (dog != null)
+            if (theAnimal != null)
             {
                 Cost = 25;
                 Console.WriteLine($"the Service will cost {Cost} for getting {AnimalName} Claws Cut");
@@ -43,13 +43,13 @@ namespace Inlämning1.Class
         }
 
         // does the Washing register and cost calculation
-        public void Washing()
+        public void Washing(List<IAnimal> animals)
         {
             Console.WriteLine("Please Write the name of the Animal you want Getting Washing the Service");
             var AnimalName = Console.ReadLine();
-            var dog = dogManager.SearchTroughtListByAnimalName(AnimalName);
+            var theAnimal = animal.SearchTroughtListByAnimalName(animals,AnimalName); 
 
-            if (dog != null)
+            if (theAnimal != null)
             {
                 Cost = 15;
                 Console.WriteLine($"the Service will cost {Cost} for getting {AnimalName} Washed");
@@ -61,39 +61,10 @@ namespace Inlämning1.Class
 
         }
 
-        // Turns In or Out and Animal
-        public void TurnInAnimal(string AnimalName)
-        {
-            if (dogManager.Dogs.Any(where => where.Name == AnimalName))
-            {
-                Console.WriteLine($"{AnimalName} Turned In");
-                dogManager.Dogs.Find(Animal => Animal.Name == AnimalName).InKennel = true;
-                dogManager.Dogs.Find(Animal => Animal.Name == AnimalName).SetTurnInTime();
-            }
+       
 
 
-        }
 
-        public void TakeOutAnimal(string AnimalName)
-        {
-            decimal cost = 10;
-
-            if (dogManager.Dogs.Any(where => where.Name == AnimalName))
-            {
-                Console.WriteLine($"{AnimalName} Taken Out");
-                dogManager.Dogs.Find(Animal => Animal.Name == AnimalName).InKennel = false;
-
-                var turnInTime = dogManager.Dogs.Find(Animal => Animal.Name == AnimalName).TurnInTime;
-                var difference = DateTime.Now.Hour - turnInTime.Hour;
-                if (difference > 0)
-                {
-                    difference = 1;
-                }
-                cost = cost * difference;
-
-
-            }
-        }
 
 
 

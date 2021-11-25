@@ -13,6 +13,7 @@ namespace Inlämning1.Class
         IChecksAndControlls checksAndControlls;
         ICustomerManager customerManager;
         IDogManager dogManager;
+        List<IAnimal> animals = new();
 
 
 
@@ -29,6 +30,7 @@ namespace Inlämning1.Class
         {
             try
             {
+                
                 bool Active = true;
                 while (Active)
                 {
@@ -43,7 +45,7 @@ namespace Inlämning1.Class
                     var Option = Console.ReadLine();
 
                     Option = checksAndControlls.UppercaseFirstLetter(Option);
-
+     
                     switch (Option)
                     {
 
@@ -98,26 +100,30 @@ namespace Inlämning1.Class
                     var Option = Console.ReadLine();
 
                     Option = checksAndControlls.UppercaseFirstLetter(Option);
-
+                    var dogs = dogManager.Dogs.Count;
                     string AnimalName;
+                    if (animals.Count < dogs )
+                    {
+                        MakeAnimalList();
+                    }
                     switch (Option)
                     {
                         case "1":
-                            kennelServices.Washing();
+                            kennelServices.Washing(animals);
                             break;
                         case "2":
-                            kennelServices.CuttingClaws();
+                            kennelServices.CuttingClaws(animals);
                             break;
                         case "3":
                             Console.WriteLine("Name of the Dog you wish to Turn In");
                             AnimalName = Console.ReadLine();
-                            kennelServices.TurnInAnimal(AnimalName);
+                            dogManager.TurnInAnimal(AnimalName);
                             Console.WriteLine("------------------------------------------");
                             break;
                         case "4":
                             Console.WriteLine("Name of the Dog you wish to Turn Out");
                             AnimalName = Console.ReadLine();
-                            kennelServices.TakeOutAnimal(AnimalName);
+                            dogManager.TakeOutAnimal(AnimalName);
                             Console.WriteLine("------------------------------------------");
                             break;
                         case "Exit":
@@ -249,7 +255,13 @@ namespace Inlämning1.Class
 
         }
 
-
+        void MakeAnimalList()
+        {
+            foreach (var item in dogManager.Dogs)
+            {
+                animals.Add(item);
+            }
+        }
 
     }
 }

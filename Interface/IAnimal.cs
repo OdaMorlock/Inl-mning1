@@ -20,6 +20,9 @@ namespace Inlämning1.Interface
         void SetTurnInTime();
         void SetId();
 
+        IAnimal SearchTroughtListByOwnerName(List<IAnimal> animals,string OwnerFullName);
+        IAnimal SearchTroughtListByAnimalName(List<IAnimal> animals, string AnimalName);
+
     }
 }
 

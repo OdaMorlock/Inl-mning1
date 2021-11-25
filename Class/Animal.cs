@@ -34,5 +34,17 @@ namespace Inlämning1.Class
         {
             TurnInTime = DateTime.Now;
         }
+
+        public IAnimal SearchTroughtListByAnimalName(List<IAnimal> animals, string AnimalName)
+        {
+            return animals.Find(x => x.Name == AnimalName);
+        }
+        public IAnimal SearchTroughtListByOwnerName(List<IAnimal> animals, string OwnerFullName)
+        {
+
+            return animals.Find(x => x.Owner == OwnerFullName);
+
+        }
+
     }
 }

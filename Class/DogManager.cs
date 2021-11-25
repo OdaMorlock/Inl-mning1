@@ -14,14 +14,10 @@ namespace Inlämning1.Class
         public DogManager(IDog dog)
         {
             this.dog = dog;
-
+            Dogs = new List<IDog>(); 
         }
 
         public List<IDog> Dogs { get; set; }
-
-        readonly List<IDog> dogs = new();
-         
-
 
 
         public void AddDog()
@@ -75,13 +71,13 @@ namespace Inlämning1.Class
             dog.SetAnimaltype();
             dog.InKennel = false;
 
-
-            dogs.Add(dog);
+            Dogs.Add(dog);
+   
         }
 
         public void ViewListOfDogs()
         {
-            foreach (var item in dogs)
+            foreach (var item in Dogs)
             {
                 Console.WriteLine("----------------------------------------------------------");
                 Console.WriteLine($"Dog Owner:{item.Owner}");
@@ -93,18 +89,12 @@ namespace Inlämning1.Class
             }
         }
 
-        public IDog SearchTroughtListByOwnerName(string OwnerFullName)
-        {
-
-          return dogs.Find(x => x.Owner == OwnerFullName);
-
-        }
 
         public void ListOfDogsOwnedByOwner(string OwnerFullName)
         {
 
 
-            var found = dogs.FindAll(x => x.Owner == OwnerFullName);
+            var found = Dogs.FindAll(x => x.Owner == OwnerFullName);
 
             if (found.Count != 0)
             {
@@ -133,14 +123,45 @@ namespace Inlämning1.Class
         public void AddDummyDogs()
         {
             //Adding Dummy Dogs
-            dogs.Add(new Dog { Id = Guid.NewGuid(), Animaltype = "Dog", Name = "Dog1Name", Age = 1, Gender = "Dog1Gender", Owner = "Owner.1", DogType = "DogType1", InKennel = false });
-            dogs.Add(new Dog { Id = Guid.NewGuid(), Animaltype = "Dog", Name = "Dog2Name", Age = 2, Gender = "Dog2Gender", Owner = "Owner.2", DogType = "DogType2", InKennel = false });
-            dogs.Add(new Dog { Id = Guid.NewGuid(), Animaltype = "Dog", Name = "Dog3Name", Age = 3, Gender = "Dog1Gender", Owner = "Owner.2", DogType = "DogType2", InKennel = false });
+            Dogs.Add(new Dog { Id = Guid.NewGuid(), Animaltype = "Dog", Name = "Dog1Name", Age = 1, Gender = "Dog1Gender", Owner = "Owner.1", DogType = "DogType1", InKennel = false });
+            Dogs.Add(new Dog { Id = Guid.NewGuid(), Animaltype = "Dog", Name = "Dog2Name", Age = 2, Gender = "Dog2Gender", Owner = "Owner.2", DogType = "DogType2", InKennel = false });
+            Dogs.Add(new Dog { Id = Guid.NewGuid(), Animaltype = "Dog", Name = "Dog3Name", Age = 3, Gender = "Dog1Gender", Owner = "Owner.2", DogType = "DogType2", InKennel = false });
+
         }
 
-        public IDog SearchTroughtListByAnimalName(string AnimalName)
+        public void TurnInAnimal(string AnimalName)
         {
-            return dogs.Find(x => x.Name == AnimalName);
+            if (Dogs.Any(where => where.Name == AnimalName))
+            {
+                Console.WriteLine($"{AnimalName} Turned In");
+                Dogs.Find(Animal => Animal.Name == AnimalName).InKennel = true;
+                Dogs.Find(Animal => Animal.Name == AnimalName).SetTurnInTime();
+
+            }
+
         }
+
+        public void TakeOutAnimal(string AnimalName)
+        {
+            int difference = 0;
+            if (Dogs.Any(where => where.Name == AnimalName))
+            {
+                Console.WriteLine($"{AnimalName} Taken Out");
+                Dogs.Find(Animal => Animal.Name == AnimalName).InKennel = false;
+
+                var turnInTime = Dogs.Find(Animal => Animal.Name == AnimalName).TurnInTime;
+                 difference = DateTime.Now.Hour - turnInTime.Hour;
+                if (difference < 0)
+                {
+                    difference = 1;
+                }
+                decimal cost = 5;
+                cost = cost * difference;
+                Console.WriteLine($"Cost is :{cost} ");
+
+            }
+    
+        }
+    
     }
 }
