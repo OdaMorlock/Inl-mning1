@@ -24,15 +24,19 @@ namespace Inlämning1
 
             builder.RegisterType<Customer>().As<ICustomer>();
             builder.RegisterType<Dog>().As<IDog>();
+            builder.RegisterType<Animal>().As<IAnimal>();
+
+            builder.RegisterType<CustomerMananger>().As<ICustomerManager>();
+            builder.RegisterType<DogManager>().As<IDogManager>();
 
             builder.RegisterType<KennelServices>().As<IKennelServices>();
-            builder.RegisterType<AddToList>().As<IAddToList>();
-
-            builder.RegisterType<ViewListClass>().As<IViewList>();
-            builder.RegisterType<SearchTroughList>().As<ISearchTroughList>();
+    
+            builder.RegisterType<ChecksAndControlls>().As<IChecksAndControlls>();
 
             return builder.Build();
 
+
+            //builder.RegisterType<>().As<>();
         }
  
         

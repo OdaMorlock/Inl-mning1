@@ -7,21 +7,33 @@ using System.Threading.Tasks;
 
 namespace Inlämning1.Class
 {
-    class Dog : IDog
+    class Animal : IAnimal
     {
-    
         public Guid Id { get; set; }
 
         public string Owner { get; set; }
         public string Animaltype { get; set; }
 
-
-        public string DogType { get; set; }
         public string Name { get; set; }
         public int Age { get; set; }
         public string Gender { get; set; }
         public bool InKennel { get; set; }
         public DateTime TurnInTime { get; set; }
+
+
+        public void SetId()
+        {
+            if (Id == Guid.Empty)
+            {
+                Id = Guid.NewGuid();
+            }
+
+        }
+
+        public void SetTurnInTime()
+        {
+            TurnInTime = DateTime.Now;
+        }
 
         public IAnimal SearchTroughtListByAnimalName(List<IAnimal> animals, string AnimalName)
         {
@@ -33,35 +45,6 @@ namespace Inlämning1.Class
             return animals.Find(x => x.Owner == OwnerFullName);
 
         }
-
-
-        #region Set 
-        public void SetAnimaltype()
-        {
-            if (string.IsNullOrWhiteSpace(Animaltype))
-            {
-                Animaltype = "Dog";
-            }
-          
-        }
-
-
-
-        public void SetId()
-        {
-            if (Id == Guid.Empty)
-            {
-                Id = Guid.NewGuid();
-            }
- 
-        }
-
-        public void SetTurnInTime()
-        {
-            TurnInTime = DateTime.Now;
-        }
-        #endregion
-
 
     }
 }

@@ -1,0 +1,29 @@
+﻿Ha en en lista med IDog kan bli problematiskt i framtiden om kenneln vill ta emot andra djur t.ex. katter du bör ha något mer generiskt
+
+
+
+AddToList som klass är udda. Normalt sätt har man en klass som hanterar saker som t.ex. AnimalManager och i den har du sen en funktion AddAnimal()
+
+
+
+AddToList har new dog och new customer i sig då bryter vi mot dependency inversion - Automapper har inget med saken att göra
+
+
+
+Dog klassen har en string animaltype.. vad är tanken att den ska spara. Om det är ett dog object så antar jag att animaltype är dog no?
+
+
+
+Kennelservices är problematiskt om vi vill lägga till nya tjänster i framtiden då vi måste in och ändra i klassen. Då bryter vi mot open closed principen
+
+
+
+Menu klassen är ju inte riktigt oo men jag hade inte förväntat mig det heller av er.. Dock så skulle jag gärna se att du la varje meny i sin egen klass så att om man vill ändra i en meny så behöver man inte röra koden för dom andra menyerna
+
+
+
+Du identifierar ägare med ett GUID i customer men med en sträng i IAnimal
+
+
+
+Där har du lite o pilla med

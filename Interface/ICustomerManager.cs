@@ -6,14 +6,16 @@ using System.Threading.Tasks;
 
 namespace Inlämning1.Interface
 {
-    interface IKennelServices
+    interface ICustomerManager
     {
 
-        Decimal Cost { get; set; }
+        List<ICustomer> Customers { get; set; }
 
-        void Washing(List<IAnimal> animals);
-        void CuttingClaws(List<IAnimal> animals);
+        void AddCustomer();
 
+        void ListOfCustomer();
+
+        void DummyCustomer();
 
     }
 }

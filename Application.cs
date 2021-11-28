@@ -12,10 +12,6 @@ namespace Inlämning1
     {
         IMenu menu;
 
-        //Would have been API and not List if i had the time
-        List<ICustomer> Customers = new List<ICustomer>();
-        List<IDog> Dogs = new List<IDog>();
-
         public Application(IMenu menu)
         {
             this.menu = menu;
@@ -25,7 +21,7 @@ namespace Inlämning1
         // Runs the Main Menu
         public void Run()
         {
-            menu.MainMenu(Customers,Dogs);
+            menu.MainMenu();
         }
     }
 }

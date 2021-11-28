@@ -9,10 +9,8 @@ namespace Inlämning1.Interface
     interface IDog :IAnimal
     {
         string DogType { get; set; }
-        DateTime TurnInTime { get; set; }
-        void SetTurnInTime();
+
         void SetAnimaltype();
-        void SetId();
 
     }
 }

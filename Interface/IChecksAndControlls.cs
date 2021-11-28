@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace Inlämning1.Interface
 {
-    interface ISearchTroughList
+    interface IChecksAndControlls
     {
-        IDog SearchForAnimalUsingName(List<IDog> dogs, string AnimalName);
+        string UppercaseFirstLetter(string Word);
+        bool CheckIfStringIsEmpty(string Word);
+
     }
 }
